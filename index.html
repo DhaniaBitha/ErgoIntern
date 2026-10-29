@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErgoIntern - Discover Experiences, Shape Your Future</title>
+    <!-- Favicon / Logo di Tab Browser -->
+    <link rel="icon" type="image/png" href="logoergointern.png">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Auto Infinite Scroll Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: scroll 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        /* Gradient Background Diagonal (#F3D8A6 ke #7A5239) */
+        body {
+            background: linear-gradient(135deg, #F3D8A6 0%, #7A5239 100%);
+            background-attachment: fixed;
+        }
+
+        /* Keyframes untuk Efek Kelap-Kelip Bintang */
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.1);
+            }
+        }
+
+        .star-particle {
+            position: absolute;
+            background-image: url('star1background.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            animation: twinkle var(--duration, 3s) infinite ease-in-out var(--delay, 0s);
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans min-h-screen relative overflow-x-hidden">
+
+    <!-- Container Bintang Kelap-Kelip Background -->
+    <div id="stars-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="relative z-10">
+
+        <!-- Header Halaman Utama dengan Background #7A5239 -->
+        <nav class="bg-[#7A5239] shadow-sm border-b border-white/10 sticky top-0 z-50">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <!-- Logo Navbar -->
+                <a href="#" onclick="showPage('home')" class="flex items-center gap-2">
+                    <img src="logoergointern.png" alt="ErgoIntern Logo" class="h-10 w-auto object-contain">
+                </a>
+                
+                <!-- Internal EPSK Logo -->
+                <div class="flex items-center gap-2 text-sm italic text-[#FFFCEB]">
+                    <img src="epsklogo.png" alt="EPSK Logo" class="h-6 w-auto object-contain">
+                    <span>Internal <strong class="font-bold">EPSK</strong></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ================= HALAMAN UTAMA (HOME) ================= -->
+        <section id="page-home" class="page-content max-w-6xl mx-auto px-4 py-8">
+            <!-- Hero Section -->
+            <div class="text-center py-4">
+                <!-- Logo Utama di Hero Section (Margin Bottom Dikurangi) -->
+                <div class="flex justify-center mb-2">
+                    <img src="logoergointern.png" alt="ErgoIntern Logo" class="h-24 md:h-32 w-auto object-contain drop-shadow-sm">
+                </div>
+                
+                <!-- Slogan Berdekatan dengan Logo -->
+                <p class="text-xl md:text-2xl text-[#FFFCEB] mb-8 italic font-medium drop-shadow-sm">
+                    “Discover Experiences, Shape Your Future”
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <!-- Tombol Explore KP -->
+                    <button onclick="showPage('explore-kp')" class="px-6 py-3 bg-[#4B2D19] text-[#FFEE99] font-semibold rounded-lg shadow-md hover:opacity-90 transition flex items-center justify-center gap-2">
+                        Explore Kerja Praktek <i data-lucide="arrow-right"></i>
+                    </button>
+                    <!-- Tombol Explore Magang -->
+                    <button onclick="showPage('explore-magang')" class="px-6 py-3 bg-[#FFEE99] text-[#4B2D19] font-semibold rounded-lg shadow-md hover:opacity-90 transition flex items-center justify-center gap-2">
+                        Explore Magang <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Industry Experiences dengan Background #FFFCEB Transparansi 60% -->
+            <div class="mt-12 bg-[#FFFCEB]/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40">
+                <h3 class="text-center text-sm font-bold text-[#7A5239] uppercase tracking-wider mb-6">
+                    Industry Experiences
+                </h3>
+                
+                <!-- Continuous Marquee + Manual Drag/Scroll -->
+                <div class="overflow-x-auto no-scrollbar py-4 cursor-grab active:cursor-grabbing">
+                    <div class="flex gap-8 items-center w-max animate-marquee">
+                        <!-- Set 1 Logo -->
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="petrokimiagresik.jpg" alt="Petrokimia Gresik" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="pertaminapetraniaga.png" alt="Pertamina Patra Niaga" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="plnlogo.png" alt="PLN" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="inkalogo.png" alt="INKA" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="charoenindonesia.png" alt="PT Charoen Phokpand Indonesia" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="plnnusantarapower.png" alt="PLN Nusantara Power" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="pdamsuryasembada.png" alt="PDAM Surya Sembada" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="kaltimlogo.png" alt="PT Kaltim Parna Industri" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="pelindomarine.jpg" alt="PT Pelindo Marine Services" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="kbs.webp" alt="PD Taman Satwa KBS" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="pupukkaltim.png" alt="PT Pupuk Kaltim" class="max-h-full max-w-full object-contain">
+                        </div>
+                        
+                        <!-- Duplikasi Logo untuk Efek Loop Mulus -->
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="petrokimiagresik.jpg" alt="Petrokimia Gresik" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="pertaminapetraniaga.png" alt="Pertamina Patra Niaga" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="plnlogo.png" alt="PLN" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="inkalogo.png" alt="INKA" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="charoenindonesia.png" alt="PT Charoen Pokphand Indonesia" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="kaltimlogo.png" alt="PT Kaltim Parna Industri" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="pdamsuryasembada.png" alt="PDAM Surya Sembada" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="plnnusantarapower.png" alt="PLN Nusantara Power" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="pelindomarine.jpg" alt="PT Pelindo Marine Services" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="kbs.webp" alt="PD Taman Satwa KBS" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-20 bg-white/80 rounded-xl p-3 flex items-center justify-center shadow-sm border border-white/60">
+                            <img src="pupukkaltim.png" alt="PT Pupuk Kaltim" class="max-h-full max-w-full object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE EXPLORE KERJA PRAKTEK ================= -->
+        <section id="page-explore-kp" class="page-content hidden max-w-6xl mx-auto px-4 py-8">
+            <div class="flex items-center gap-4 mb-2">
+                <button onclick="showPage('home')" class="p-2 hover:bg-white/40 rounded-full transition">
+                    <i data-lucide="arrow-left" class="w-6 h-6 text-[#4B2D19]"></i>
+                </button>
+                <h2 class="text-3xl font-bold text-[#4B2D19]">Kerja Praktek</h2>
+            </div>
+            <p class="text-[#4B2D19] mb-8 ml-12">See More</p>
+
+            <div id="grid-kp" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Data dikontrol via JavaScript -->
+            </div>
+        </section>
+
+        <!-- ================= PAGE EXPLORE MAGANG ================= -->
+        <section id="page-explore-magang" class="page-content hidden max-w-6xl mx-auto px-4 py-8">
+            <div class="flex items-center gap-4 mb-2">
+                <button onclick="showPage('home')" class="p-2 hover:bg-white/40 rounded-full transition">
+                    <i data-lucide="arrow-left" class="w-6 h-6 text-[#4B2D19]"></i>
+                </button>
+                <h2 class="text-3xl font-bold text-[#4B2D19]">Magang</h2>
+            </div>
+            <p class="text-[#4B2D19] mb-8 ml-12">See More</p>
+
+            <div id="grid-magang" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Data dikontrol via JavaScript -->
+            </div>
+        </section>
+
+        <!-- ================= PAGE DETAIL ASISTEN ================= -->
+        <section id="page-detail" class="page-content hidden max-w-4xl mx-auto px-4 py-8">
+            <div class="flex items-center gap-4 mb-6">
+                <button id="detail-back-btn" onclick="showPage('explore-kp')" class="p-2 hover:bg-white/40 rounded-full transition">
+                    <i data-lucide="arrow-left" class="w-6 h-6 text-[#4B2D19]"></i>
+                </button>
+                <h2 id="detail-title" class="text-2xl md:text-3xl font-bold text-[#4B2D19]">
+                    <!-- e.g. Kerja Praktek - DHN -->
+                </h2>
+            </div>
+
+            <div class="bg-[#FFFCEB]/90 backdrop-blur-md rounded-2xl shadow-sm border border-white/50 p-6 md:p-8 space-y-8">
+                <!-- Foto Asisten & Logo Perusahaan -->
+                <div class="flex flex-col sm:flex-row items-center gap-6 border-b pb-6">
+                    <img id="detail-foto" src="" alt="Foto Asisten" class="w-28 h-28 rounded-full object-cover border-2 border-[#7A5239]">
+                    <div class="text-center sm:text-left space-y-2">
+                        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-2">
+                            <h3 id="detail-nama" class="text-xl font-bold text-gray-900"></h3>
+                            <span id="detail-inisial-badge" class="text-xs font-bold bg-[#7A5239]/10 text-[#7A5239] px-2 py-0.5 rounded"></span>
+                        </div>
+                        <p id="detail-perusahaan" class="text-lg font-semibold text-[#7A5239]"></p>
+                        <p id="detail-alamat" class="text-sm text-gray-600 flex items-center justify-center sm:justify-start gap-1">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 flex-shrink-0"></i> <span></span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Dokumentasi Scroll Kesamping -->
+                <div>
+                    <h4 class="font-semibold text-gray-700 mb-3">Dokumentasi Kegiatan</h4>
+                    <div id="detail-dokumentasi" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+                        <!-- List Foto Dokumentasi -->
+                    </div>
+                </div>
+
+                <!-- Detail Info: Dospem & Divisi Dipisah Secara Jelas -->
+                <div class="space-y-4 bg-white/60 p-5 rounded-xl border border-gray-200/50">
+                    <div>
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Dosen Pembimbing</span>
+                        <p id="detail-dospem" class="font-medium text-gray-800 mt-1"></p>
+                    </div>
+                    <hr class="border-gray-200/60">
+                    <div>
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Divisi</span>
+                        <p id="detail-divisi" class="font-semibold text-[#7A5239] mt-1"></p>
+                    </div>
+                    <hr class="border-gray-200/60">
+                    <div>
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Deskripsi Divisi</span>
+                        <p id="detail-deskripsi-divisi" class="text-gray-700 text-sm leading-relaxed mt-1"></p>
+                    </div>
+                </div>
+
+                <!-- Cara Pendaftaran -->
+                <div>
+                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5 text-[#7A5239]"></i> Cara Pendaftaran
+                    </h4>
+                    <div id="detail-pendaftaran" class="text-gray-600 bg-white/60 p-4 rounded-xl text-sm leading-relaxed border border-gray-200/50"></div>
+                </div>
+
+                <!-- Kendala & Saran -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-red-50/80 p-4 rounded-xl border border-red-100">
+                        <h4 class="font-semibold text-red-800 mb-2 flex items-center gap-2">
+                            <i data-lucide="alert-circle" class="w-5 h-5"></i> Kendala
+                        </h4>
+                        <p id="detail-kendala" class="text-red-700 text-sm leading-relaxed whitespace-pre-line"></p>
+                    </div>
+                    <div class="bg-green-50/80 p-4 rounded-xl border border-green-100">
+                        <h4 class="font-semibold text-green-800 mb-2 flex items-center gap-2">
+                            <i data-lucide="lightbulb" class="w-5 h-5"></i> Saran
+                        </h4>
+                        <div id="detail-saran" class="text-green-700 text-sm leading-relaxed whitespace-pre-line"></div>
+                    </div>
+                </div>
+
+                <!-- Fitur Tambahan: File Output KP / Magang -->
+                <div class="bg-white/70 p-5 rounded-xl border border-gray-200/60 shadow-sm">
+                    <h4 id="detail-output-title" class="font-semibold text-[#4B2D19] mb-3 flex items-center gap-2">
+                        <i data-lucide="folder-down" class="w-5 h-5 text-[#4B2D19]"></i> <span>File Output</span>
+                    </h4>
+                    <div id="detail-output-content" class="text-sm text-gray-600">
+                        <!-- Render status atau link file output -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS & Data Asisten -->
+    <script>
+        // Data 8 Asisten Kerja Praktek
+        const asistenData = [
+            {
+                id: 1,
+                tipe: "KP",
+                inisial: "DHN",
+                namaLengkap: "Dhania Faza Naufalia",
+                foto: "dhnprofile.png",
+                namaPerusahaan: "PT. Petrokimia Gresik",
+                alamat: "Jl. Jenderal Ahmad Yani, Gresik 61119, Jawa Timur",
+                dospem: "Rizki Revianto Putera, ST, MT., Ph.D.",
+                divisi: "Departemen Pengadaan Barang",
+                deskripsiDivisi: "Departemen Pengadaan Barang melaksanakan proses eksekusi pembelian barang, termasuk pengurusan pengadaan barang dalam negeri maupun impor. Selain itu, pada sub-bagian Expediting Perijinan & Pelaporan juga melakukan rekapitulasi data pengadaan barang selama satu periode atau satu tahun untuk mengetahui performansi secara general.",
+                pendaftaranType: "button",
+                pendaftaranLabel: "Situs Resmi Perusahaan",
+                pendaftaranUrl: "https://prakerin.petrokimia-gresik.com/",
+                kendala: "Karena dari Dosen Pembimbing membebaskan aku untuk bikin laporannya terserah kaya gimana + dari perusahaan pun mengikuti saja ide dari aku dan partner KP, makanya jadi agak membingungkan dan takut hasilnya kurang sesuai ekspektasi dari dosen pembimbing.",
+                saran: "Bener-bener disearch lebih mendalam untuk tiap divisi yang mau didaftari/diselami, karena kemarin salahnya memilih divisi pengadaan barang adalah, mereka memang fokus pada pembelian barang yang mana kriteria barang pembelian bersifat rahasia. Sehingga, yang aku kerjakan di kantor sangat terbatas namun selama bisa inisiatif sendiri, bisa kok mengakali agar tetap produktif.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1lIaloCMSxBUniMHuULJyWAgeaL4XBQGO?usp=drive_link",
+                dokumentasi: [
+                    "dhndokum1.png",
+                    "dhndokum2.png"
+                ]
+            },
+            {
+                id: 2,
+                tipe: "KP",
+                inisial: "DET",
+                namaLengkap: "Mochammad Radeth Zidane",
+                foto: "detprofile.png",
+                namaPerusahaan: "PT Pertamina Patra Niaga",
+                alamat: "Graha Pertamina Jl. Medan Merdeka Timur No. 11-13, Kota Administrasi Jakarta Pusat, DKI Jakarta, 10110",
+                dospem: "Dr. Ir. Bambang Syairudin, M.T.",
+                divisi: "HSSE Subholding Downstream: Dashboard, Analisis, dan Rekapitulasi Data",
+                deskripsiDivisi: "Kerjaan ku adalah rekapitulasi data HSSE mulai dari safety sign, near miss, medical check up, hingga fatality dari semua perusahaan Pertamina Subholding Downstream, intinya aku bermain dengan data dan analisa tindak lanjut serta investigasi emergency response untuk kejadian yang bisa merugikan perusahaan secara human resource atau keuangan.",
+                pendaftaranType: "text",
+                pendaftaranText: "Mengirim email secara langsung ke email training development pertamina: trainingdev.kpi@pertamina.com",
+                kendala: "Jadi selama aku kerja praktik kemaren, pertamina sedang ada restrukturisasi, dan disini aku akhirnya disuruh membuat template laporan bulanan dashboard, karna itu analisis laporan Kerja Praktik ku bukan dalam metode apa pun melainkan kebutuhan dari perusahaan, bahkan kemaren kantor aja aku masih banyak pindah antara graha pertamina (gambir) atau di Wisma Tugu (kuningan).",
+                saran: "Aktif bertanya dan berkontribusi selama kerja praktik, banyak yang bsia di pelajari, dan banyak relasi akan terbuka jika bisa berteman di pertamina, kalau bisa dari intern ;ainnya kalian harus bsia menonjol dimana kalian di notice oleh mentor dan atasan, agar ada nilai plus setelah selesai kp dan meninggalkan kesan baik nama dan kerjaan mu di notice.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1PKTUQL_ckMqgrxl9-KCaIswOR6-KyVdH?usp=drive_link",
+                dokumentasi: [
+                    "detdokum1.png",
+                    "detdokum2.png"
+                ]
+            },
+            {
+                id: 3,
+                tipe: "KP",
+                inisial: "AQL",
+                namaLengkap: "Aqilah Gusti Nindira",
+                foto: "aqlprofile.png",
+                namaPerusahaan: "PT PLN UPT SURABAYA",
+                alamat: "Jl. Ketintang Baru No.9, Ketintang, Kec. Gayungan, Surabaya, Jawa Timur 60231, Indonesia",
+                dospem: "Dr. Naning Aranti Wessiani, S.T., M.M.",
+                divisi: "Logistic & Warehouse",
+                deskripsiDivisi: "KP ini berfokus pada kegiatan konstruksi dan pengelolaan material untuk mendukung operasional transmisi PLN. Selama KP, kami banyak terlibat dalam observasi dan analisis warehouse management, mulai dari proses penerimaan, pemeriksaan, penyimpanan, hingga pengeluaran material. Selain itu, kami melakukan maturity level assessment pada warehouse, observasi penerapan K3 dan 5S, workload analysis, serta beberapa kegiatan lapangan seperti inspeksi gardu induk dan survei tower transmisi.",
+                pendaftaranType: "text",
+                pendaftaranText: "Rekomendasi kerabat",
+                kendala: "Proses adaptasi dan pemahaman terhadap istilah serta sistem kerja di bidang kelistrikan, karena background kami bukan dari teknik elektro.",
+                saran: "Jangan hanya fokus menyelesaikan tugas yang diberikan, tetapi manfaatkan KP untuk benar-benar memahami bagaimana perusahaan bekerja secara keseluruhan, serta jangan ragu untuk bertanya kepada mentor yaah.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1wMDGcuDS2wFph1I1PkRgYpZk6HoNHWr7?usp=drive_link",
+                dokumentasi: [
+                    "aqldokum1.png",
+                    "aqldokum2.png"
+                ]
+            },
+            {
+                id: 4,
+                tipe: "KP",
+                inisial: "RYN",
+                namaLengkap: "Andaryno Akbar Firmawantoro",
+                foto: "rynprofile.png",
+                namaPerusahaan: "PT Industri Kereta Api (INKA)",
+                alamat: "Jl. Yos Sudarso No. 71 Madiun 63122, Jawa Timur.",
+                dospem: "Reza Aulia Akbar, S.T., M.T., MBA",
+                divisi: "Divisi Riset dan Pengembangan, Departemen Sistem dan Komponen Tier 1, Bagian Perencanaan, Pengendalian, dan Proses Produksi",
+                deskripsiDivisi: "Pada divisi ini fokus pada pengembangan kereta, atau hal baru yang akan dibuat indonesia dalam bidang perkeretaapian, tapi disini aku dapet tugas mengenai facility planningnya karena workshop departemen ini belum ideal, jadi aku fokus pada layout dan penataan warehouse.",
+                pendaftaranType: "button",
+                pendaftaranLabel: "Situs Pendaftaran",
+                pendaftaranUrl: "https://s.id/PendaftaranMagangMahasiswa",
+                kendala: "Pasti ada demand-demand tambahan dari mentor disana, sebisa mungkin untuk dikerjakan dengan baik.",
+                saran: "5 hari pertama KP (sesi orientasi) coba untuk mengenali dengan benar mengenai divisinya masing\", kenalan sama banyak orang. Setelah 5 hari baru kerjakan apa yang diminta, jangan menunda-nunda pekerjaan, attitude diperhatikan juga karena kalian bawa nama ITS, cari relasi sebanyak-banyaknya siapa tau berguna untuk di dunia kerja nanti kedepannya.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1GH22SunuSAqEpi8gMS46sq-cJrXKaTPr?usp=drive_link",
+                dokumentasi: [
+                    "ryndokum1.png",
+                    "ryndokum2.png"
+                ]
+            },
+            {
+                id: 5,
+                tipe: "KP",
+                inisial: "CHK",
+                namaLengkap: "Chika Alief Perwitasari",
+                foto: "chkprofile.png",
+                namaPerusahaan: "PT Charoen Pokphand Indonesia plant Krian",
+                alamat: "Jl. Raya Surabaya - Mojokerto KM.26, Kanigoro, Keboharan, Kec. Krian, Kabupaten Sidoarjo, Jawa Timur 61262",
+                dospem: "Prof. Iwan Vanany, S.T., M.T., Ph.D., IPU.",
+                divisi: "PPIC",
+                deskripsiDivisi: "Menganalisis penyimpanan raw material",
+                pendaftaranType: "text",
+                pendaftaranText: "Kenal dari relasi",
+                kendala: "Terlalu dibiarin sendiri sama mentor",
+                saran: "Be Proactive",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1ilASai_rjIuvxqiprHgNtAO9MWXWL22X?usp=drive_link",
+                dokumentasi: [
+                    "chkdokum1.png"
+                ]
+            },
+            {
+                id: 6,
+                tipe: "KP",
+                inisial: "LLA",
+                namaLengkap: "Lula Adinda Kusuma Wardana",
+                foto: "llaprofile.png",
+                namaPerusahaan: "PT PLN Nusantara Power Services",
+                alamat: "Jalan Raya Bandara Juanda No. 17 Sidoarjo - 61254 Jawa Timur",
+                dospem: "Maratus Sholihah, S.T., M.T., Ph.D.",
+                divisi: "Perencanaan dan Pengendalian Proyek",
+                deskripsiDivisi: "Departemen Rendal Proyek (Perencanaan dan Pengendalian Proyek) di PT PLN Nusantara Power Services (PLN NPS) merupakan unit strategis yang bertanggung jawab atas pengelolaan seluruh siklus proyek jasa pemeliharaan (maintenance), sistem pembangkitan, hingga proyek engineering, procurement, and construction (EPC).",
+                pendaftaranType: "text",
+                pendaftaranText: "Rekomendasi kakak tingkat",
+                kendala: "Kendala utama yang dihadapi di awal pelaksanaan KP adalah keterbatasan akses terhadap dokumen referensi teknis terdahulu (seperti contoh Project Execution Plan (PEP), WBS, dan Kurva-S proyek-proyek sebelumnya) yang dibutuhkan untuk memahami standar dan format yang diharapkan perusahaan. Selain itu, belum adanya pengarahan teknis yang spesifik sejak hari pertama membuat proses penyesuaian diri di awal KP membutuhkan waktu lebih untuk memahami alur kerja dan tugas yang diberikan.",
+                saran: "• Pelajari dan persiapkan diri dengan software manajemen proyek seperti Microsoft Project, karena tool tersebut digunakan secara aktif dalam dunia industri untuk penyusunan WBS, Kurva-S, dan penjadwalan proyek.\n• Jangan ragu untuk aktif bertanya, berdiskusi, dan berkolaborasi dengan staf maupun pembimbing di perusahaan agar proses belajar lebih optimal dan tugas-tugas dapat diselesaikan sesuai standar.\n• Manfaatkan seluruh rangkaian kegiatan KP, baik tugas teknis utama (seperti penyusunan PEP) maupun tugas administratif (seperti pengelolaan dokumen pengadaan/SCM) karena semua aktivitas tersebut memberikan gambaran nyata dan pemahaman menyeluruh tentang dinamika kerja industri.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/16WW8OZDJA13niAOTg9R34g4yW5Hv4wq5?usp=drive_link",
+                dokumentasi: [
+                    "lladokum1.png",
+                    "lladokum2.png"
+                ]
+            },
+            {
+                id: 7,
+                tipe: "KP",
+                inisial: "RDT",
+                namaLengkap: "Raditya Aryaputra",
+                foto: "rdtprofile.png",
+                namaPerusahaan: "PDAM Surya Sembada",
+                alamat: "Jl. Prof. DR. Moestopo No.2, Pacar Keling, Kec. Tambaksari, Surabaya, Jawa Timur 60131",
+                dospem: "Reza Aulia Akbar, S.T., M.T., MBA",
+                divisi: "Operations Control & Process",
+                deskripsiDivisi: "Kalau untuk divisinya sendiri itu sebenernya lebih banyak survey proses tagging di lapangan, cuma saat aku KP itu lebih ke menghitung keoptimalan alat ukur tagging yang digunakan.",
+                pendaftaranType: "text",
+                pendaftaranText: "Dari offer proyek Bu Maria, jadi yang ngereachout sebenarnya dari PDAM itu sendiri.",
+                kendala: "Karena hanya 1 bulan dan merupakan proyek ya, jadi memang dikejar waktu sekali.",
+                saran: "Jangan picky, berusaha untuk berbaur dengan lingkungan kerja, ON TIME.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1Rk3VBjXGYGk2pH4mxX59eEkwtiTps50r?usp=drive_link",
+                dokumentasi: [
+                    "rdtdokum1.png",
+                    "rdtdokum2.png"
+                ]
+            },
+            {
+                id: 8,
+                tipe: "KP",
+                inisial: "NHD",
+                namaLengkap: "Meutia Nahda Azima",
+                foto: "nhdprofile.png",
+                namaPerusahaan: "PT Kaltim Parna Industri",
+                alamat: "Jl. NPK Pelangi No.RT. 52, Lok Tuan, Kec. Bontang Utara, Kota Bontang, Kalimantan Timur 75314",
+                dospem: "Niniet Indah Arvitrida, ST., MT., PhD",
+                divisi: "Departemen Logistic",
+                deskripsiDivisi: "Logistic di PT KPI ini dibagia jadi dua divisi, procurement dan inventory. Kalo procurement ya kayak namanya lah ya yang bagian beli-beli barang atau ngurusin kontrak jasa yang dipakai di perusahaan. Kalau divisi inventory, itu cuma bagian yang nerima barang, kelola barang, n ngelakuin pencatatan kalau semisal ada barang yang direquest keluar atau diambil dari gudang dan itu manual dulu baru nanti masukin di sistem.",
+                pendaftaranType: "text",
+                pendaftaranText: "Kirim email ke HRD perusahaan",
+                kendala: "Paling cuma bingung ngasih kerjaan apa, karna logistic ini dekat banget sama hal duid-duid jadi riskan kalau ngasih tugas yang berhubungan dengan itu dan berujung hanya review berkas aja setelah dicek sama spv.",
+                saran: "Semangat ollll, jujur emang kerasa capek dan pressurenya kalau ketolak-ketolak, tapi bisa kok rekkk.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1kmf11CPqp6WZx-Wqk84Hjwj_woysKW-N?usp=drive_link",
+                dokumentasi: [
+                    "nhddokum1.png",
+                    "nhddokum2.png"
+                ]
+            },
+            {
+                id: 9,
+                tipe: "KP",
+                inisial: "LLY",
+                namaLengkap: "Laily Nur Wahyuni",
+                foto: "llyprofile.png",
+                namaPerusahaan: "PT Pelindo Marine Services",
+                alamat: "Jl. Prapat Kurung Utara No. 58, Perak Utara, Surabaya, Jawa Timur 60165",
+                dospem: "Dr. Ir. I Ketut Gunarta, M.T.",
+                divisi: "Sub Departemen Kesisteman SDM dan Budaya Perusahaan",
+                deskripsiDivisi: "Membantu pengelolaan dan pengembangan sistem SDM serta internalisasi budaya perusahaan (AKHLAK), mencakup pembaruan SOP/kebijakan SDM, penyusunan program engagement karyawan, evaluasi kinerja, hingga administrasi pendukung tata kelola kepegawaian.",
+                pendaftaranType: "text",
+                pendaftaranText: "Apply ke e-mail perusahaan",
+                kendala: "Penyesuaian awal terhadap alur kerja dan sistem internal perusahaan yang cukup kompleks, serta fleksibilitas jadwal saat pengumpulan data karena keterbatasan akses atau kesibukan pembimbing lapangan.",
+                saran: "Cari tempat KP yang sesuai dengan minat kariermu ke depan, bukan cuma sekadar gugur kewajiban. Selama KP, bersikaplah proaktif, disiplin, dan jangan takut salah, jadikan setiap feedback sebagai bahan pembelajaran.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1oIYI7ggTUdXokoMdVbV-mEYSxhgu21qS?usp=drive_link",
+                dokumentasi: [
+                    "llydokum1.png",
+                    "llydokum2.png"
+                ]
+            },
+            {
+                id: 10,
+                tipe: "KP",
+                inisial: "LSA",
+                namaLengkap: "Lusi Aulia Sabrin",
+                foto: "lsaprofile.png",
+                namaPerusahaan: "PD. Taman Satwa Kebun Binatang Surabaya",
+                alamat: "Jl. Setail No.1, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
+                dospem: "Atikah Aghdhi Pratiwi, S.T., M.T",
+                divisi: "Corporate Secretary",
+                deskripsiDivisi: "Selama KP di PDTS Kebun Binatang Surabaya, aku  terlibat dalam kegiatan evaluasi dan analisis masyarakat non-pengunjung KBS, baik dari Surabaya maupun luar Surabaya. Job Description yang dilakukan meliputi pengumpulan dan pengolahan data, analisis karakteristik masyarakat, serta identifikasi faktor-faktor yang memengaruhi minat masyarakat untuk berkunjung ke KBS.",
+                pendaftaranType: "text",
+                pendaftaranText: "Project Magang/TA Ibu Maria",
+                kendala: "Kendala yang aku hadapi adalah proses pengumpulan data yang cukup sulit, terutama dalam menjangkau responden yang sesuai dengan kriteria penelitian. Selain itu, diperlukan ketelitian dalam mengolah dan menganalisis data agar hasil yang diperoleh dapat menggambarkan kondisi masyarakat secara tepat.",
+                saran: "Saran aku, mulai mempersiapkan KP dengan baik mulai dari memahami bidang yang ingin dipelajari, mencari informasi mengenai perusahaan, hingga memperkuat dasar keilmuan yang relevan. Selama KP, jangan ragu buat tanya-tanya dan aktif berdiskusi dengan pembimbing maupun pihak perusahaan. Manfaatkan kesempatan KP untuk belajar hal baru, bangun relasi, dan menerapkan ilmu yang sudah didapatkan selama perkuliahan.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1Ez2DH-NiPuktIgv_HxkmvzIuNlt_eDMC?usp=drive_link",
+                dokumentasi: [
+                    "lsadokum1.png",
+                    "lsadokum2.png"
+                ]
+            },
+            {
+                id: 11,
+                tipe: "KP",
+                inisial: "AJN",
+                namaLengkap: "Dyah Ajeng Puspita Wijayanti",
+                foto: "ajnprofile.png",
+                namaPerusahaan: "PLN Nusantara Power Services",
+                alamat: "Jalan Raya Bandara Juanda No. 17 Sidoarjo 61254",
+                dospem: "Maratus Sholihah, S.T., M.T., Ph.D.",
+                divisi: "Perencanaan dan Pengendalian Proyek",
+                deskripsiDivisi: "Kerja praktik dilaksanakan di PT PLN Nusantara Power Services pada Departemen Perencanaan dan Pengendalian (Rendal) Proyek, yang berperan dalam memastikan proyek berjalan sesuai perencanaan waktu dan sumber daya. Penulis diarahkan untuk membuat Project Execution Plan (PEP) sebagai panduan terstruktur untuk mengintegrasikan perencanaan waktu, sumber daya, material, dan keselamatan kerja agar proyek dapat berjalan secara efektif dan terkontrol.",
+                pendaftaranType: "button",
+                pendaftaranLabel: "Situs Pendaftaran PLN",
+                pendaftaranUrl: "https://rekrutmen.pln.co.id/",
+                kendala: "Alhamdulillah tidak ada, hanya jauh saja perjalanannya.",
+                saran: "Cari perusahaan yang tugasnya jangan cuma bantuin administrasi aja. Kalau pun tidak disediakan perusahaan terkait masalahnya, bisa explore dan inisiatif minta atau tanya ke pembimbing eksternal. Jangan nunggu di reach out.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1QvU-AHNDHc2c7d0Cl5d5h26vZjXheBBo?usp=drive_link",
+                dokumentasi: [
+                    "ajndokum1.png",
+                    "ajndokum2.png"
+                ]
+            },
+            {
+                id: 12,
+                tipe: "KP",
+                inisial: "EGA",
+                namaLengkap: "Iqlima Ega Hendriani",
+                foto: "egaprofile.png",
+                namaPerusahaan: "PT PLN Nusantara Power Services",
+                alamat: "Jalan Raya Bandara Juanda No. 17 Sidoarjo",
+                dospem: "Rizki Revianto Putera, S.T., M.T., Ph.D.",
+                divisi: "Divisi Supply Chain Management, Sub Divisi Procurement Control",
+                deskripsiDivisi: "Sub Divisi Procurement Control memegang suatu peranan vital dalam memastikan proses finalisasi pembayaran tagihan vendor berjalan sesuai dengan koridor waktu yang wajar, baik dari sisi kecepatan verifikasi internal maupun koordinasi dengan divisi yang terkait. Dalam masa kerja praktik, penulis terlibat dalam menyusun analisis lead time dan bottleneck terhadap proses verifikasi tagihan vendor kontrak SCM, mulai dari invoice masuk hingga tagihan tersebut selesai untuk dibayarkan. Ketepatan waktu pembayaran tagihan merupakan aspek krusial bagi keberlangsungan hubungan dengan vendor, karena keterlambatan pembayaran berdampak langsung terhadap tingkat kepuasan vendor (vendor satisfaction) dan pengelolaan arus kas (cash flow management) perusahaan.",
+                pendaftaranType: "text",
+                pendaftaranText: "Melalui email HR nya langsung berdasarkan rekomendasi kakak tingkat.",
+                kendala: "Terdapat convidential data yang harus hati-hati dalam proses mengelola dan juga proses mengerjakan laporan KP yang akan dijadikan continuous improvement oleh perusahaan.",
+                saran: "Cari secara paralel perusahaan yang ingin kalian tuju dan juga jangan berpatok pada satu perusahaan dalam jangka waktu yang sangat lama. Selain itu, cari teman yang satu tujuan dan mau untuk diajak berjuang bersama agar kalian tidak kelimpungan sendiri. Untuk di perusahaan, jangan malu untuk melakukan proses inisiasi dahulu dan jangan malu untuk bertanya, kita punya penguasaan teori dan mas mba perusahaan punya praktik lapangan yang apabila di combine jadi satu akan menghasilkan sesuatu yang bermanfaat bagi perusahaan.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1BjBkQ3UbWyfpn2RmiVgHN4oKjw9qZQVg?usp=drive_link",
+                dokumentasi: [
+                    "egadokum1.png",
+                    "egadokum2.png"
+                ]
+            },
+            {
+                id: 13,
+                tipe: "Magang",
+                inisial: "AQL",
+                namaLengkap: "Aqilah Gusti Nindira",
+                foto: "aqlprofile.png",
+                namaPerusahaan: "PT. ISM, Tbk. Bogasari Flour Mills Surabaya",
+                alamat: "Jl. Nilam Timur No.16, Perak Utara, Kec. Pabean Cantian, Surabaya, Jawa Timur 60165, Indonesia",
+                dospem: "-",
+                divisi: "Produksi (Mill)",
+                deskripsiDivisi: "Selama KP, saya ditempatkan di Mill Department, khususnya Mill EF, yang bertanggung jawab terhadap proses pengolahan gandum menjadi tepung terigu, mulai dari proses screening, cleaning, milling/rolling, hingga pengendalian kualitas produk. Selama KP, saya juga berkesempatan mempelajari proses produksi secara menyeluruh, melakukan observasi aktivitas operator seperti Screening Man dan Roll Man, serta mempelajari maintenance mesin dan quality control. Selain kegiatan operasional, saya juga mengerjakan tugas khusus terkait analisis risiko ergonomi menggunakan metode REBA pada aktivitas Screening Man.",
+                pendaftaranType: "text",
+                pendaftaranText: "Rekomendasi kerabat",
+                kendala: "Beradaptasi dengan istilah teknis, mesin, dan alur proses milling yang cukup kompleks, terutama karena banyak hal baru yang sebelumnya belum dipelajari secara mendalam di perkuliahan.",
+                saran: "Tetap terbuka untuk belajar hal-hal di luar bidang yang kita kuasai, karena pengalaman KP justru menjadi kesempatan untuk melihat bagaimana ilmu Teknik Industri diterapkan secara langsung di dunia kerja.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/18C2OeD7Oo9VIJoZPZCalJ3_E2WfQsFAF?usp=drive_link",
+                dokumentasi: [
+                    "aqlmagang1.png",
+                    "aqlmagang2.png"
+                ]
+            },
+            {
+                id: 14,
+                tipe: "Magang",
+                inisial: "CHK",
+                namaLengkap: "Chika Alief Perwitasari",
+                foto: "chkprofile.png",
+                namaPerusahaan: "PT Organon Pharma Indonesia",
+                alamat: "Jl. Raya Pandaan - Bangil No.KM.48, Kali Tengah, Karang Jati, Kec. Pandaan, Pasuruan, Jawa Timur 67156",
+                dospem: "-",
+                divisi: "Integrated Productivity System",
+                deskripsiDivisi: "Buat VSM, buat warehouse metric, cleansing data",
+                pendaftaranType: "text",
+                pendaftaranText: "Relasi",
+                kendala: "-",
+                saran: "-",
+                fileType: "text",
+                fileText: "Tidak mencantumkan file",
+                dokumentasi: [
+                    "chkmagang1.png",
+                    "chkmagang2.png"
+                ]
+            },
+            {
+                id: 15,
+                tipe: "Magang",
+                inisial: "LLA",
+                namaLengkap: "Lula Adinda Kusuma Wardana",
+                foto: "llaprofile.png",
+                namaPerusahaan: "PT Telkom Indonesia (Persero) Tbk — Witel Surabaya Madura",
+                alamat: "Kantor Telkom Witel Surabaya Madura, Jl. Dinoyo No. 48, Keputran, Kec. Tegalsari, Surabaya, Jawa Timur 60265",
+                dospem: "-",
+                divisi: "Divisi Large Enterprise & Government (khususnya pada Unit/Tim Billing Collection / Lesa VI)",
+                deskripsiDivisi: "Divisi ini mengelola hubungan bisnis, pelayanan teknologi informasi dan komunikasi, serta administrasi keuangan pasca-kontrak (aftersales) untuk pelanggan segmen enterprise (perusahaan besar dan instansi pemerintah seperti Bank Jatim dan Pelindo). Aktivitas utamanya mencakup penanganan laporan gangguan (Service Level Guarantee), proses administrasi perubahan layanan (upgrade/downgrade/relokasi), pembuatan dan verifikasi invoice, pengelolaan pelaporan penggunaan (usage), hingga proses pencatatan dan rekonsiliasi penagihan (billing collection).",
+                pendaftaranType: "button",
+                pendaftaranLabel: "Situs Resmi Perusahaan",
+                pendaftaranUrl: "https://internship.telkom.co.id/",
+                kendala: "1. Pekerjaan tim billing didominasi oleh aktivitas di depan layar komputer (screen-based), sehingga pengamatan langsung berpotensi menghadapi keterbatasan penangkapan detail elemen kerja secara presisi serta adanya Hawthorne Effect (pekerja merasa diawasi). 2. Penyelesaian tugas billing sering mengalami hambatan/penundaan (delay) karena sangat bergantung pada kecepatan input data dan antrean persetujuan (approval) dari pihak internal/divisi lain. 3. Tata letak dan fasilitas ruang kerja/ruang rapat belum sepenuhnya ergonomis (posisi layar miring, manajemen kabel di lantai, ketiadaan meja pada beberapa kursi), yang memicu kelelahan fisik (tech-neck) saat rapat/diskusi panjang.",
+                saran: "Pahami dulu permasalahan riil di divisi tempatmu berada, tentukan project atau usulan perbaikan yang jelas sejak awal, serta jadilah individu yang proaktif. Telkom sangat mengapresiasi anak magang yang tidak sekadar menjalankan tugas rutinitas harian, tetapi mampu memberikan dampak (impact) nyata dan solusi konkret seperti optimalisasi beban kerja atau perbaikan proses bisnis. Jadi, jangan ragu untuk aktif berdiskusi dengan mentor, peka melihat celah inefisiensi di lingkungan kerja, dan bawa mindset bahwa hasil analisismu harus bisa memberi nilai tambah bagi efektivitas operasional perusahaan.",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1HybEGXF0RB-29ogWp3_6Mn3cm0LBqXus?usp=drive_link",
+                dokumentasi: [
+                    "llamagang1.png",
+                    "llamagang2.png"
+                ]
+            },
+            {
+                id: 16,
+                tipe: "Magang",
+                inisial: "NHD",
+                namaLengkap: "Meutia Nahda Azima",
+                foto: "nhdprofile.png",
+                namaPerusahaan: "PT Pupuk Kalimantan Timur",
+                alamat: "Jl. Ir. James Simandjuntak No. 1, Bontang, Kalimantan Timur 75313",
+                dospem: "-",
+                divisi: "Pengadaan Barang",
+                deskripsiDivisi: "Daanba itu sama kayak procurement cuma khusus yang barang material aja, jadi ya cuma nerima request trus urus ke supplier sampai deal termasuk pengirimannya sampai pabrik.",
+                pendaftaranType: "button",
+                pendaftaranLabel: "Situs Resmi Perusahaan",
+                pendaftaranUrl: "https://internship.pupukkaltim.com/register/kp",
+                kendala: "Gaada si, disini mas mbanya asik dan walaupun umurnya beda 10 tahunan tetep mau dipanggil mas mbak",
+                saran: "Semangat",
+                fileType: "button",
+                fileLabel: "File output dapat diakses di sini",
+                fileUrl: "https://drive.google.com/drive/folders/1dantqWA8Dlr7_71gBybBvbKPmiwDH47v?usp=drive_link",
+                dokumentasi: [
+                    "nhdmagang1.png",
+                    "nhdmagang2.png"
+                ]
+            }
+        ];
+
+        // Generator Bintang Kelap-Kelip Otomatis
+        function generateStars() {
+            const container = document.getElementById('stars-container');
+            const totalStars = 28;
+
+            for (let i = 0; i < totalStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star-particle';
+                
+                const size = Math.floor(Math.random() * 16) + 12;
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                const duration = (Math.random() * 3 + 2).toFixed(1);
+                const delay = (Math.random() * 4).toFixed(1);
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.top = `${top}%`;
+                star.style.left = `${left}%`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
+
+                container.appendChild(star);
+            }
+        }
+
+        // System Navigasi Halaman
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.add('hidden');
+            });
+            document.getElementById(`page-${pageId}`).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        // Render Card List
+        function renderCards() {
+            const containerKP = document.getElementById('grid-kp');
+            const containerMagang = document.getElementById('grid-magang');
+
+            containerKP.innerHTML = '';
+            const containerMagangEl = document.getElementById('grid-magang');
+            containerMagangEl.innerHTML = '';
+
+            asistenData.forEach(item => {
+                const cardHTML = `
+                    <div onclick="openDetail(${item.id})" class="bg-[#FFFCEB]/80 backdrop-blur-md rounded-xl border border-white/50 p-5 shadow-sm hover:shadow-md transition cursor-pointer flex items-center gap-4">
+                        <img src="${item.foto}" class="w-16 h-16 rounded-full object-cover border border-[#7A5239]" alt="${item.inisial}">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold bg-[#7A5239]/10 text-[#7A5239] px-2 py-0.5 rounded">${item.inisial}</span>
+                                <span class="text-xs text-gray-500 font-medium">${item.namaLengkap.split(' ')[0]}</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 line-clamp-1">${item.namaPerusahaan}</h4>
+                            <p class="text-xs text-[#4B2D19] font-medium flex items-center gap-1">
+                                Klik untuk detail <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                            </p>
+                        </div>
+                    </div>
+                `;
+
+                if (item.tipe === "KP") {
+                    containerKP.innerHTML += cardHTML;
+                } else {
+                    containerMagangEl.innerHTML += cardHTML;
+                }
+            });
+
+            if (containerMagangEl.children.length === 0) {
+                containerMagangEl.innerHTML = `<p class="col-span-full text-center text-gray-700 italic bg-white/40 p-6 rounded-xl">Data Magang belum tersedia saat ini.</p>`;
+            }
+
+            lucide.createIcons();
+        }
+
+        // Open Detail Page
+        function openDetail(id) {
+            const item = asistenData.find(a => a.id === id);
+            if (!item) return;
+
+            const isKP = item.tipe === 'KP';
+
+            document.getElementById('detail-title').innerText = `${isKP ? 'Kerja Praktek' : 'Magang'} - ${item.inisial}`;
+            document.getElementById('detail-back-btn').setAttribute('onclick', `showPage('${isKP ? 'explore-kp' : 'explore-magang'}')`);
+            document.getElementById('detail-foto').src = item.foto;
+            document.getElementById('detail-nama').innerText = item.namaLengkap;
+            document.getElementById('detail-inisial-badge').innerText = `Inisial: ${item.inisial}`;
+            document.getElementById('detail-perusahaan').innerText = item.namaPerusahaan;
+            document.getElementById('detail-alamat').querySelector('span').innerText = item.alamat;
+            document.getElementById('detail-dospem').innerText = item.dospem;
+            
+            // Pemisahan Divisi dan Deskripsi Divisi
+            document.getElementById('detail-divisi').innerText = item.divisi;
+            document.getElementById('detail-deskripsi-divisi').innerText = item.deskripsiDivisi;
+            
+            // Pendaftaran: Tombol vs Teks
+            const pendaftaranContainer = document.getElementById('detail-pendaftaran');
+            if (item.pendaftaranType === 'button') {
+                pendaftaranContainer.innerHTML = `
+                    <p class="mb-3">Pendaftaran dapat dilakukan melalui tautan resmi berikut:</p>
+                    <a href="${item.pendaftaranUrl}" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#4B2D19] text-[#FFEE99] font-medium text-sm rounded-lg hover:opacity-90 transition shadow-sm">
+                        <span>${item.pendaftaranLabel}</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                `;
+            } else {
+                pendaftaranContainer.innerHTML = `<p>${item.pendaftaranText}</p>`;
+            }
+
+            document.getElementById('detail-kendala').innerText = item.kendala;
+            document.getElementById('detail-saran').innerText = item.saran;
+
+            // Detail Fitur Output File
+            const outputTitle = document.getElementById('detail-output-title');
+            const outputContent = document.getElementById('detail-output-content');
+            
+            outputTitle.querySelector('span').innerText = isKP ? "File Output Kerja Praktik" : "File Output Magang";
+            
+            
+if (item.fileType === "button" && item.fileUrl) {
+    outputContent.innerHTML = `
+        <a href="${item.fileUrl}"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white font-medium text-sm rounded-lg hover:bg-emerald-800 transition shadow-sm">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            ${item.fileLabel || "Lihat File Output"}
+        </a>
+    `;
+} else {
+    outputContent.innerHTML = `
+        <p class="italic text-gray-500">
+            Belum ada file output yang diunggah.
+        </p>
+    `;
+}
+
+            // Render Dokumentasi Foto
+            const docContainer = document.getElementById('detail-dokumentasi');
+            docContainer.innerHTML = '';
+            if (item.dokumentasi && item.dokumentasi.length > 0) {
+                item.dokumentasi.forEach(imgUrl => {
+                    docContainer.innerHTML += `
+                        <img src="${imgUrl}" class="w-60 h-36 rounded-lg object-cover flex-shrink-0 border border-gray-200 shadow-sm" alt="Dokumentasi">
+                    `;
+                });
+            } else {
+                docContainer.innerHTML = `<p class="text-sm text-gray-400 italic">Tidak ada foto dokumentasi</p>`;
+            }
+
+            lucide.createIcons();
+            showPage('detail');
+        }
+
+        // Initialize Icons, Stars & Apps
+        window.onload = () => {
+            lucide.createIcons();
+            generateStars();
+            renderCards();
+        };
+    </script>
+</body>
+</html>
